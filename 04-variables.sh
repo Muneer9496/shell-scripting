@@ -13,6 +13,6 @@ c=30
 # we use special charcter called "$" to print
 # echo $a
 
-echo $A
-echo $(a)
+echo $a
+echo $(b)
 echo "$c"
