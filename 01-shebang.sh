@@ -17,6 +17,9 @@ echo hello world
 echo this is first session of bash
 echo we know how to run a script
 
-echo line1
-echo line2
-echo line3
+# echo line1
+# echo line2
+# echo line3
+
+# how print mulitple lines using a single echo command ?
+#   To do so we need to use escape sequence characters
