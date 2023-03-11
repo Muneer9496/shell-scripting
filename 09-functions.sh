@@ -6,3 +6,13 @@
 # 2) aliases            (aliases are shortcuts alias net= "netstat -tulpn")
 # 3) shell built-in commands  
 # 4) functions           # functions are nothing but a set of command that can be written in a sequenc and called n number of times
+
+
+# declaring is a function
+
+smaple () {
+    echo "i am a messaged called from sample function"
+}
+
+# this is called a function
+
