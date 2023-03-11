@@ -15,3 +15,4 @@
 
 echo hello world
 echo this is first session of bash
+echo we know how to run a script
