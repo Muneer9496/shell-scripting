@@ -18,4 +18,4 @@ echo -e "LineX\nlineY"
 # "" : double quotes
 # '' : single quotes
 
-echo -e "LineA\n\t\LineB"
+echo -e "LineA\n\tLineB"
