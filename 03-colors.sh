@@ -16,4 +16,9 @@
  #      echo -e "\e[32m i am printing green color \e[0m"
 
  echo -e "\e[32m i am printing green color \e[0m"
+ echo -e "\e[31m i am printing red color \e[0m"
+ echo -e "\e[33m i am printing yellow color \e[0m"
+ echo -e "\e[34m i am printing blue color \e[0m"
+ echo -e "\e[35m i am printing magenta color \e[0m"
+ echo -e "\e[36m i am printing cyan color \e[0m"
 
