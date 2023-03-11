@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 echo line1
 echo line2
