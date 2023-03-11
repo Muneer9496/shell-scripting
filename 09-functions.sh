@@ -10,9 +10,10 @@
 
 # declaring is a function
 
-smaple() {
+sample() {
     echo "i am a messaged called from sample function"
     }
+
 
 # this is called a function
 
