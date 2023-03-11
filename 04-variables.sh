@@ -16,3 +16,5 @@ c=30
 echo $a
 echo ${b}
 echo "$c"
+
+echo "iam printing the value of d $d"
