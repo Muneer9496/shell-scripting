@@ -18,3 +18,10 @@ echo ${b}
 echo "$c"
 
 echo "iam printing the value of d $d"
+
+# when you try print a variable which is not declared, bash is going to consider as Null or Empty
+
+rm -rf /data/${DATA_DIR}    
+
+# how do you supply the variables form the command line
+# export VarName = value
