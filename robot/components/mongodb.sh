@@ -24,24 +24,21 @@ stat () {
 }
 
 
-echo -n "configuring the $COMPONENT repo"
+echo -n "configuring the $COMPONENT repo :"
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
 stat $?
 
-echo -n "installing the $COMPONENT"
+echo -n "installing the $COMPONENT :"
 yum install -y mongodb-org   &>> $LOGFILE
 stat $?
 
 
+echo -n "starting the $COMPONENT :"
+systemctl enable mongod   &>> $LOGFILE
+systemctl start mongod    &>> $LOGFILE
+stat $?
 
 
-
-# 1. Install Mongo & Start Service.
-
-# ```bash
-# # yum install -y mongodb-org
-# # systemctl enable mongod
-# # systemctl start mongod
 
 # ```
 
