@@ -30,6 +30,7 @@ systemctl start nginx &>> /tmp/frontend.log
 
 
 
+# Here are some takeaways
 
 1) few of steps are failed, but still my sccript is executed irrespective of failure
 2) installation failed, why? i have not validated that i have root privileges
