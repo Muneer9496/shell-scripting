@@ -1,7 +1,10 @@
 #!/bin/bash
 
 
-set -e
+# set -e
+
+COMPONENT=frontend
+LOGFILE=/tmp/$COMPONENT.log
 
 # validating whether the executed user is a root user or not
 ID=$(id -u) 
@@ -11,56 +14,37 @@ if [ "$ID" -ne 0 ] ; then
     exit 1
 fi
 
+stat () {
+    if [ $1 -eq 0 ] ; then
+        echo -e "\e[32m Success \e[0m"
+    else 
+        echo -e "\e[31m Failure \e[0m"
+        exit 2
+    fi
+}
+
 echo -n "installing nginx : "
-yum install nginx -y &>> /tmp/frontend.log
+yum install nginx -y &>> $LOGFILE
+stat $?
 
-if [ $? -eq 0 ] ; then
-    echo -e "\e[32m Success \e[0m"
-else 
-    echo -e "\e[31m Failure \e[0m"
-    exit 2
-fi
+echo -n "downloading the $COMPONENT components :"
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
+stat $?
 
-echo -n "downloading the frontend componenets :"
-curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
-if [ $? -eq 0 ] ; then
-    echo -e "\e[32m Success \e[0m"
-else 
-    echo -e "\e[31m Failure \e[0m"
-    exit 2
-fi
-
-
-echo -n "performing a cleanup of old frontend :"
+echo -n "performing a cleanup of old $COMPONENT :"
 cd /usr/share/nginx/html
-rm -rf * &>> /tmp/frontend.log
-if [ $? -eq 0 ] ; then
-    echo -e "\e[32m Success \e[0m"
-else 
-    echo -e "\e[31m Failure \e[0m"
-    exit 2
-fi
+rm -rf * &>> $LOGFILE
+stat $?
 
-
-echo -n "copying the downloaded frontend content :"
-unzip /tmp/frontend.zip &>> /tmp/frontend.log
-mv frontend-main/* .
+echo -n "copying the downloaded $COMPONENT content :"
+unzip /tmp/$COMPONENT.zip &>> /$LOGFILE
+mv $COMPONENT-main/* .
 mv static/* .
-rm -rf frontend-main README.md
+rm -rf $COMPONENT-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
-if [ $? -eq 0 ] ; then
-    echo -e "\e[32m Success \e[0m"
-else 
-    echo -e "\e[31m Failure \e[0m"
-    exit 2
-fi
+stat $?
 
 echo -n "starting the service :"
-systemctl enable nginx &>> /tmp/frontend.log
-systemctl start nginx &>> /tmp/frontend.log
-if [ $? -eq 0 ] ; then
-    echo -e "\e[32m Success \e[0m"
-else 
-    echo -e "\e[31m Failure \e[0m"
-    exit 2
-fi
+systemctl enable nginx &>> $LOGFILE
+systemctl start nginx &>> $LOGFILE
+stat $?
