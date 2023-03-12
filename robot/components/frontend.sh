@@ -4,8 +4,9 @@
 set -e
 
 # valoidating whether the executed user is a root user or not
-USER_ID=$(id -u) 
-if [ "USER_ID" =ne 0] ; then
+ID=$(id -u) 
+
+if [ "$ID" =ne 0] ; then
     echo : -e "\e[32m you should execute this step as root user or with a sudo as prefix \e[0m"
     exit 1
 fi
