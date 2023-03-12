@@ -13,12 +13,12 @@ ACTION=$1
 case $ACTION in
    
       start)
-           echo "starting payment service"
+           echo -e "\e[32m starting payment service \e[0m"
            ;;
       stop)
-           echo "stopping payment service"
+           echo -e "\e[35m stopping payment service \e[0m"
            ;;
       restart)
-           echo "restart payment service"
+           echo -e "\e[38m restart payment service \e[0m"
            ;;
 esac
