@@ -10,6 +10,6 @@
 
 # for loop syntax :
 
-for val in 10 20 30 40 50 : do
+for val in 10 20 30 40 50 ; do
     echo $val
 done 
