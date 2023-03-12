@@ -25,3 +25,13 @@ Following are the shell scripting topics which we discuss as a part of our proje
 8. Loops
 9. Basis of SED Command
 10. Commands
+
+
+Input:
+   1) Std input ( > or 1> )
+   
+
+Output:
+   1) Std output ( > or 1> )
+   2) Std error ( 2> or 2>> )
+   3) both std output & error ( &> or &>> )
