@@ -63,8 +63,13 @@ ACTION=$1
 
 if [ "$ACTION" == "start" ] ; then
      echo -e "\e[32m service payment is starting \e[0m"
-    
+     exit 0
+
+elif [ "$ACTION" == "stop" ] ; then
+     echo -e "\e[35m service payment is stopping \e[0m"
+     exit 1
+
 else 
     echo -e "\e[31m service payment status is unknown \e[0m"
-
+    exit 2
 fi
