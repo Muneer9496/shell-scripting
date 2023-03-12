@@ -17,6 +17,10 @@ stat() {
     echo -e "\t stat function completed"
 
     echo "calling sample function"
+    
+    
+    exit 2
+
     sample
 }
 
