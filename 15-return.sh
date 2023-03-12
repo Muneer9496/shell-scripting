@@ -20,7 +20,8 @@ stat() {
     
     
     # exit 2
-
+    return
+    
     sample
 }
 
