@@ -3,6 +3,13 @@
 
 set -e
 
+# valoidating whether the executed user is a root user or not
+USER_ID=$(id -u) 
+if [ "USER_ID" =ne 0] ; then
+    echo : -e "\e[32m you should execute this step as root user or with a sudo as prefix \e[0m"
+    exit 1
+fi
+
 yum install nginx -y
 
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
