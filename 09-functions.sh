@@ -22,7 +22,7 @@ stat() {
     echo -e "\t stat function completed"
 
     echo "calling sample function"
-    smaple
+    sample
 }
 
 echo "calling stat function"
