@@ -14,5 +14,13 @@ sample() {
     echo "i am a messaged called from sample function"
 }
 
-# this is called a function
+# this is called a function.
+stat() {
+    echo "total number of sessions : $(who | wc -l)"
+    echo "todays date is $(date +%F)"
+    echo "Load average on the system is $(uptime | awk -F : '{print $NF}' | awk -F , '{print $1}')"
+    echo "stat function completed"
+}
 
+echo "calling stat fucntion"
+stat 
