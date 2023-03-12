@@ -18,30 +18,49 @@ if [ $? -eq 0 ] ; then
     echo -e "\e[32m Success \e[0m"
 else 
     echo -e "\e[31m Failure \e[0m"
+    exit 2
+fi
+
+echo -n "downloading the frontend componenets :"
+curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
+if [ $? -eq 0 ] ; then
+    echo -e "\e[32m Success \e[0m"
+else 
+    echo -e "\e[31m Failure \e[0m"
+    exit 2
 fi
 
 
-curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
-
+echo -n "performing a cleanup of old frontend :"
 cd /usr/share/nginx/html
 rm -rf * &>> /tmp/frontend.log
+if [ $? -eq 0 ] ; then
+    echo -e "\e[32m Success \e[0m"
+else 
+    echo -e "\e[31m Failure \e[0m"
+    exit 2
+fi
+
+
+echo -n "copying the downloaded frontend content :"
 unzip /tmp/frontend.zip &>> /tmp/frontend.log
 mv frontend-main/* .
 mv static/* .
 rm -rf frontend-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
+if [ $? -eq 0 ] ; then
+    echo -e "\e[32m Success \e[0m"
+else 
+    echo -e "\e[31m Failure \e[0m"
+    exit 2
+fi
 
-
+echo -n "starting the service :"
 systemctl enable nginx &>> /tmp/frontend.log
 systemctl start nginx &>> /tmp/frontend.log
 
 
 
-
-# # Here are some takeaways
-# 1) few of steps are failed, but still my sccript is executed irrespective of failure
-# 2) installation failed, why? i have not validated that i have root privileges
-# 3) the info that id like to provide is success or failure
 
 
 
