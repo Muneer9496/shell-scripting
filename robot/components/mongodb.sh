@@ -52,7 +52,7 @@ curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/$COMPONEN
 stat $?
 
 echo -n "extracting the $COMPONENT schema :"
-cd /tmp/$COMPONENT.zip
+cd /tmp/
 unzip -o $COMPONENT.zip    &>> $LOGFILE
 stat $?
 
