@@ -58,6 +58,6 @@ stat $?
 
 echo -n "injecting the schema :"
 cd /tmp/$COMPONENT-main
-mongo < catalogie.js    &>> $LOGFILE
+mongo < catalogue.js    &>> $LOGFILE
 mongo < users.js        &>> $LOGFILE
 stat $?
