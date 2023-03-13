@@ -34,16 +34,18 @@ echo -n "installing nodejs :"
 yum install nodejs -y  &>> $LOGFILE
 stat $?
 
-echo -n "creating the application user account :"
-useradd $APPUSER    &>> $LOGFILE
-stat $?
-
+id $APPUSER     &>> $LOGFILE
+if [ $? -ne 0 ] ; then
+    echo -n "creating the application user account :"
+    useradd roboshop    &>> $LOGFILE
+    stat $?
+fi
 echo -n "Downloading the $COMPONENT schema :"
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
 stat $?
 
 echo -n "Extracting the $COMPONENT in the $APPUSER directory :"
-cd /tmp
+cd /home/$APPUSER
 unzip -o /tmp/$COMPONENT.zip   &>> $LOGFILE
 stat $?
 
