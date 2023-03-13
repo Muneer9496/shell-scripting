@@ -52,7 +52,7 @@ curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/$COMPONEN
 stat $?
 
 echo -n "extracting the $COMPONENT schema :"
-cd /tmp/
+cd /tmp/$COMPONENT.zip
 unzip -o $COMPONENT.zip    &>> $LOGFILE
 stat $?
 
@@ -61,21 +61,3 @@ cd /tmp/$COMPONENT-main
 mongo < catalogie.js    &>> $LOGFILE
 mongo < users.js        &>> $LOGFILE
 stat $?
-
-
-
-
-
-# ```
-# # curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
-
-# # cd /tmp
-# # unzip mongodb.zip
-# # cd mongodb-main
-# # mongo < catalogue.js
-# # mongo < users.js
-# ```
-
-# Symbol `<` will take the input from a file and give that input to the command.
-
-# - Now proceed with the next component `CATALOGUE`
