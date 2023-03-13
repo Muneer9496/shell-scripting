@@ -25,52 +25,17 @@ stat () {
 }
 
 
-echo -n "configuring the $COMPONENT repo :"
-curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
-stat $?
-
-echo -n "installing the $COMPONENT :"
-yum install -y mongodb-org   &>> $LOGFILE
-stat $?
-
-
-echo -n "starting the $COMPONENT :"
-systemctl enable mongod   &>> $LOGFILE
-systemctl start mongod    &>> $LOGFILE
-stat $?
-
-echo -n "updating the $COMPONENT visibility :"
-sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
-stat $?
-
-echo -n "performing daemon-reload :"
-systemctl daemon-reload   &>> $LOGFILE
-systemctl restart mongod 
-stat $?
-
-
-echo -n "extracting the $COMPONENT schema :"
-cd /tmp/$COMPONENT.zip
-unzip -o $COMPONENT.zip    &>> $LOGFILE
-stat $?
-
-echo -n "injecting the schema :"
-cd /tmp/$COMPONENT-main
-mongo < catalogie.js    &>> $LOGFILE
-mongo < users.js        &>> $LOGFILE
-stat $?
-
 
 echo -n "configuring the nodejs repo :"
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
 stat $?
 
 echo -n "installing nodejs :"
-yum install nodejs -y
+yum install nodejs -y  &>> $LOGFILE
 stat $?
 
 echo -n "creating the application user account :"
-useradd $APPUSER
+useradd $APPUSER    &>> $LOGFILE
 stat $?
 
 echo -n "Downloading the $COMPONENT schema :"
@@ -79,7 +44,7 @@ stat $?
 
 echo -n "Extracting the $COMPONENT in the $APPUSER directory :"
 cd /tmp/$APPUSER
-unzip  
+unzip -o /tmp/$COMPONENT.zip   &>> $LOGFILE
 
 # # yum install nodejs -y
 
