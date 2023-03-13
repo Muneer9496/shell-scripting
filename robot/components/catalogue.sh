@@ -49,6 +49,11 @@ cd /home/$APPUSER
 unzip -o /tmp/$COMPONENT.zip   &>> $LOGFILE
 stat $?
 
+echo -n "Configuring the permissions :"
+mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
+chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
+stat $?
+
 
 # # yum install nodejs -y
 
