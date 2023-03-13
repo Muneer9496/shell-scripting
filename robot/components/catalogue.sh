@@ -43,7 +43,7 @@ curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPO
 stat $?
 
 echo -n "Extracting the $COMPONENT in the $APPUSER directory :"
-cd /tmp/$APPUSER
+cd /tmp
 unzip -o /tmp/$COMPONENT.zip   &>> $LOGFILE
 stat $?
 
