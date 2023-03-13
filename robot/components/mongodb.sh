@@ -52,7 +52,7 @@ curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPO
 stat $?
 
 echo -n "extracting the $COMPONENT schema :"
-cd /tmp/$COMPONENT.zip
+cd /tmp
 unzip -o $COMPONENT.zip    &>> $LOGFILE
 stat $?
 
