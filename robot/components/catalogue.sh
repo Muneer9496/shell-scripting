@@ -45,6 +45,8 @@ stat $?
 echo -n "Extracting the $COMPONENT in the $APPUSER directory :"
 cd /tmp/$APPUSER
 unzip -o /tmp/$COMPONENT.zip   &>> $LOGFILE
+stat $?
+
 
 # # yum install nodejs -y
 
