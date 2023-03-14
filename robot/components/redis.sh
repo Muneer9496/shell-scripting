@@ -35,25 +35,7 @@ sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis.conf
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis/redis.conf
 stat $?
 
-echo -n "performing daemon-reload :"
+echo -n "performing daemon-reload : "
 systemctl daemon-reload   &>> $LOGFILE
 systemctl restart $COMPONENT   &>> $LOGFILE
 stat $?
-
-
-
-
-
-
-# 2. Update the BindIP from `127.0.0.1` to `0.0.0.0` in config file `/etc/redis.conf` & `/etc/redis/redis.conf`
-
-# ```sql
-# # vim /etc/redis.conf
-# # vim /etc/redis/redis.conf
-# ```
-
-# ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4591fa90-1013-44a3-92e6-bf851cd2e213/Untitled.png)
-
-    
-
-# 3. Start Redis Database
