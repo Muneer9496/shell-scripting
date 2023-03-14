@@ -37,7 +37,7 @@ stat $?
 
 echo -n "performing daemon-reload :"
 systemctl daemon-reload   &>> $LOGFILE
-systemctl restart mongod  $COMPONENT   &>> $LOGFILE
+systemctl restart redis  $COMPONENT   &>> $LOGFILE
 stat $?
 
 
