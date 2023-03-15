@@ -37,5 +37,6 @@ stat $?
 
 echo -n "performing daemon-reload :"
 systemctl daemon-reload   &>> $LOGFILE
+systemctl enable $COMPONENT   &>> $LOGFILE
 systemctl restart $COMPONENT   &>> $LOGFILE
 stat $?
