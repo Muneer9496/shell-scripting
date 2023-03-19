@@ -12,7 +12,7 @@ HOSTEDZONEID="Z096213084GYRYZXR9VK"
 COMPONENT=$1 
 
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=DevOps-LabImage-CentOS7" | jq '.Images[].ImageId' | sed -e 's/"//g')
-SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b53-allow-all-sg  | jq ".SecurityGroups[].GroupId" | sed -e 's/"//g')
+SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b53-allow-ALL | jq ".SecurityGroups[].GroupId" | sed -e 's/"//g')
 
 echo -n "Ami ID is $AMI_ID"
 
