@@ -44,7 +44,7 @@ rm -rf $COMPONENT-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
-for component in catalogue user cart shipping payment; downloaded
+for component in catalogue user cart shipping payment; do
     echo -n "updating the proxy details in the reverse proxy file :"
     sed -i "/$component/s/localhost/$component.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
 done
